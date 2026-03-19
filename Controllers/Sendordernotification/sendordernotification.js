@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer')
+const { Resend } = require('resend')
 
 // ── Variables de entorno ──────────────────────────────────────
 const LOGO_URL   = process.env.LOGO_URL   || 'https://res.cloudinary.com/dtype2a4n/image/upload/v1773824168/logo_app_2_on4fxz.png'
@@ -9,16 +9,8 @@ const COLOR_LINK = process.env.COLOR_LINK || '#06B6D4'
 const COLOR_TEXT = process.env.COLOR_TEXT || '#f7f7f7'
 const COLOR_SUB  = process.env.COLOR_SUB  || '#d0d3d6'
 
-// ── Transporter Hostinger (puerto dinámico) ───────────────────
-const transporter = nodemailer.createTransport({
-  host:   'smtp.hostinger.com',
-  port:   process.env.NODE_ENV === 'production' ? 587 : 465,
-  secure: process.env.NODE_ENV !== 'production',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-})
+// ── Configuración Resend ──────────────────────────────────────
+const client = new Resend(process.env.RESEND_API_KEY)
 
 // ── Enviar notificación de orden ──────────────────────────────
 const sendOrderNotification = async (orden) => {
@@ -66,8 +58,8 @@ const sendOrderNotification = async (orden) => {
       </tr>
     ` : ''
 
-    await transporter.sendMail({
-      from:    `"Circle Tickets" <${process.env.EMAIL_USER}>`,
+    await client.emails.send({
+      from:    'Circle Tickets <hola@circletickets.store>',
       to:      destinatario,
       subject: `Confirmación de pedido ${numeroPedido} — Circle Tickets`,
       html: `

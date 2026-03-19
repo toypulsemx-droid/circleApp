@@ -1,17 +1,10 @@
-const bcrypt     = require('bcrypt')
-const nodemailer = require('nodemailer')
-const User       = require('../../Models/userModel')
+const bcrypt = require('bcrypt')
+const resend = require('resend')
+const User   = require('../../Models/userModel')
 
-// ── Transporter Hostinger ────────────────────────────────────────
-const transporter = nodemailer.createTransport({
-  host:   'smtp.hostinger.com',
-  port:   process.env.NODE_ENV === 'production' ? 587 : 465,
-  secure: process.env.NODE_ENV !== 'production',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-})
+// ── Configuración Resend ─────────────────────────────────────────
+const { Resend } = resend
+const client     = new Resend(process.env.RESEND_API_KEY)
 
 // ── Genera código de 6 dígitos ───────────────────────────────────
 const generarCodigo = () =>
@@ -41,8 +34,8 @@ const sendCode = async (req, res) => {
       { upsert: true, returnDocument: 'after' }
     )
 
-    await transporter.sendMail({
-      from:    `"Circle Tickets" <${process.env.EMAIL_USER}>`,
+    await client.emails.send({
+      from:    'Circle Tickets <hola@circletickets.store>',
       to:      email,
       subject: `Tu código de acceso: ${codigo}`,
       html: `
