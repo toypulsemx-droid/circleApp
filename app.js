@@ -26,7 +26,7 @@ const whitelist = [
 
 app.use(cors({
   origin: function(origin, callback) {
-    console.log('ORIGIN:', origin)
+    // console.log('ORIGIN:', origin)
     if (!origin) return callback(null, true);
 
     if (process.env.NODE_ENV === "development") {

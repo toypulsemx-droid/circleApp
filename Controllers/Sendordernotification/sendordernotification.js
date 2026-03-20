@@ -188,7 +188,7 @@ const sendOrderNotification = async (orden) => {
       `,
     })
 
-    console.log(`[sendOrderNotification] Correo enviado a ${destinatario} — ${numeroPedido}`)
+    // console.log(`[sendOrderNotification] Correo enviado a ${destinatario} — ${numeroPedido}`)
 
   } catch (error) {
     console.error('[sendOrderNotification] Error al enviar correo:', error.message)
