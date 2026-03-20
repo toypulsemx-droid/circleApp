@@ -15,7 +15,8 @@ const whitelist = [
   'http://localhost:5174',
   'https://jade-jelly-bba4f6.netlify.app',
   'https://toy-pulsemx.store',
-  'http://192.168.100.33:5174'
+  'http://192.168.100.33:5174',
+  'https://circletickets.netlify.app/'
 ];
 
 app.use(cors({
