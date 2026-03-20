@@ -166,7 +166,7 @@ const sendOrderNotification = async (orden) => {
 
           <!-- Consultar estatus -->
           <div style="text-align:center;margin-bottom:28px;">
-            <a href="${SITE_URL}"
+            <a href="https://www.circletickets.store"
               style="display:inline-block;padding:13px 32px;background:${COLOR_LINK};color:#000;font-size:14px;font-weight:800;letter-spacing:0.5px;border-radius:10px;text-decoration:none;">
               Consultar estatus en tu perfil
             </a>
