@@ -17,7 +17,10 @@ const whitelist = [
   'https://toy-pulsemx.store',
   'http://192.168.100.33:5174',
   'https://circletickets.netlify.app',
-  'https://www.circletickets.store'
+  'https://www.circletickets.store',
+  'https://circletickets.netlify.app',
+  'https://circletickets.store',
+  'https://www.circletickets.store',
 
 ];
 
