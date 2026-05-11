@@ -88,7 +88,7 @@ const orderSchema = new mongoose.Schema(
     // ── Estatus ────────────────────────────────────────────────
     estatus: {
       type:    String,
-      enum:    ['pendiente', 'pagado', 'cancelado', 'expirado', 'procesando'],
+      enum:    ['pendiente', 'pagado', 'cancelado', 'expirado', 'procesando' ,'Confirmado'],
       default: 'pendiente',
     },
   },
